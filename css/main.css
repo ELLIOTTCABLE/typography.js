@@ -1,0 +1,43 @@
+* {margin: 0em; padding: 0em;}
+html, body { height: 100%; }
+
+/* ======== */
+/* = Grid = */
+/* ======== */
+
+#container {
+  font: normal 400 18px/1.33333333333333 "Garamond Premier Pro", Impact;
+  height: 100%;
+  width: 100%;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(200, 200, 255, 0.50)), to(rgba(0, 0, 0, 0.0)), color-stop(0.03, rgba(0, 0, 0, 0.0)));
+  -webkit-background-size: 1.33333333333333em 1.33333333333333em;
+  -webkit-background-origin: padding;
+}
+
+/* ========== */
+/* = Layout = */
+/* ========== */
+
+#centerer-one {
+  height: 100%;
+  display: table !important;
+  margin: auto;
+}
+#centerer-one > * {
+  display: table-cell !important;
+  vertical-align: middle !important;
+}
+
+#container {
+  font: normal 400 18px/1.33333333333333 "Garamond Premier Pro", Impact;
+  width: 25em;
+  height: 25em;
+  border: 1px solid black;
+}
+
+#calculator > * {
+  position: fixed;
+  top: 0;
+  right: 0;
+  border: 1px solid black;
+}
