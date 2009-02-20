@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title>JavaScript ♥ Typography</title>
+  <script type="text/javascript" charset="utf-8"
+    src="js/vendor/mootools-1.2.1-core-jm.js"></script>
+  <style type="text/css" media="screen">
+    
+    * {margin: 0em; padding: 0em;}
+    html, body { height: 100%; }
+    
+    /* ======== */
+    /* = Grid = */
+    /* ======== */
+    
+    #container {
+      font: normal 400 18px/1.33333333333333 "Garamond Premier Pro", Impact;
+      height: 100%;
+      width: 100%;
+      background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(200, 200, 255, 0.50)), to(rgba(0, 0, 0, 0.0)), color-stop(0.03, rgba(0, 0, 0, 0.0)));
+      -webkit-background-size: 1.33333333333333em 1.33333333333333em;
+      -webkit-background-origin: padding;
+    }
+    
+    /* ========== */
+    /* = Layout = */
+    /* ========== */
+    
+    #centerer-one {
+      height: 100%;
+      display: table !important;
+      margin: auto;
+    }
+    #centerer-one > * {
+      display: table-cell !important;
+      vertical-align: middle !important;
+    }
+    
+    #container {
+      font: normal 400 18px/1.33333333333333 "Garamond Premier Pro", Impact;
+      width: 25em;
+      height: 25em;
+      border: 1px solid black;
+    }
+    
+    #calculator > * {
+      position: fixed;
+      top: 0;
+      right: 0;
+      border: 1px solid black;
+    }
+  </style>
+  <script type="text/javascript" charset="utf-8">
+    window.addEvent('domready', function(){
+      
+      var root = document.documentElement.ownerDocument.documentElement;
+      
+      // What typeface are we going to calculate for? The only important
+      // elements are probably the point size and line-height, but you never
+      // know.
+      var target_element = $('container')
+      
+      // First, we create a div, and move it into the middle of nowhere.
+      var calculation_area = new Element('div');
+      calculation_area.setStyle('position', 'fixed');
+      calculation_area.setStyle('top', '0px');
+      calculation_area.setStyle('left', '0px');
+      
+      calculation_area.setStyle('font-family', target_element.getStyle('font-family'));
+      calculation_area.setStyle('font-style', target_element.getStyle('font-style'));
+      calculation_area.setStyle('font-variant', target_element.getStyle('font-variant'));
+      calculation_area.setStyle('font-weight', target_element.getStyle('font-weight'));
+      calculation_area.setStyle('line-height', '1.0');
+      
+      calculation_area.setStyle('font-size', '1000%');
+      calculation_area.inject(root);
+      
+      // Now we put some measurable content into the area
+      calculation_area.set('text', 'ijMqm');
+      
+      // Next, we create a sub-element
+      var sub_span = new Element('span');
+      sub_span.setStyle('font-size', '0%');
+      sub_span.inject(calculation_area);
+      
+      // And inject some text into it
+      sub_span.set('text', '');
+      
+      var bottom = sub_span.offsetTop + sub_span.offsetHeight;
+      // This is imprecise, because we're assuming the baseline of the small
+      // text is 3/4s of the height. This is, unfortunately, necessary,
+      // because WebKit won't let us set the height of the text to 0%.
+      var baseline_position = bottom; // + (0.25 * sub_span.offsetHeight);
+      var baseline = (calculation_area.offsetHeight - baseline_position) / calculation_area.offsetHeight;
+      
+      console.log(baseline)
+      
+      /* -- ---- -- ! -- ---- -- */
+      
+      var baseline_indicator = new Element('div');
+      baseline_indicator.setStyle('position', 'absolute');
+      baseline_indicator.setStyle('top', baseline_position.toString() + 'px');
+      baseline_indicator.setStyle('left', '0px');
+      baseline_indicator.setStyle('width', '100%');
+      baseline_indicator.setStyle('z-index', '9999');
+      baseline_indicator.setStyle('border-top', '1px solid red');
+      baseline_indicator.inject(calculation_area);
+      
+      // =============
+      // = Adjusting =
+      // =============
+      
+      // Now that we have a baseline percentage, we need to calculate the
+      // proper padding for the target element. First, we need to duplicate a
+      // single line of said element.
+      
+      var calculation_area_two = new Element('div');
+      calculation_area_two.setStyle('position', 'fixed');
+      calculation_area_two.setStyle('bottom', '0px');
+      calculation_area_two.setStyle('right', '0px');
+      
+      calculation_area_two.setStyle('font-family', target_element.getStyle('font-family'));
+      calculation_area_two.setStyle('font-style', target_element.getStyle('font-style'));
+      calculation_area_two.setStyle('font-variant', target_element.getStyle('font-variant'));
+      calculation_area_two.setStyle('font-weight', target_element.getStyle('font-weight'));
+      calculation_area_two.setStyle('font-size', target_element.getStyle('font-size'));
+      calculation_area_two.setStyle('line-height', target_element.getStyle('line-height'));
+      
+      calculation_area_two.inject(root);
+      
+      calculation_area_two.set('text', 'ijMqm');
+      
+      var line_height = calculation_area_two.offsetHeight + 1; // Not sure why I need to +1…
+      calculation_area_two.setStyle('line-height', '1.0');
+      var height = calculation_area_two.offsetHeight;
+      
+      console.log(line_height, height, line_height - height);
+      console.log(baseline, baseline * line_height, baseline * height);
+      
+      // Finally, apply this padding to the top of the target element.
+      target_element.setStyle('padding-top', ((line_height - height) + (baseline * height)).toString() + 'px');
+      
+      var baseline_indicator_two = new Element('div');
+      baseline_indicator_two.setStyle('position', 'absolute');
+      baseline_indicator_two.setStyle('bottom', (baseline * height).toString() + 'px');
+      baseline_indicator_two.setStyle('right', '0px');
+      baseline_indicator_two.setStyle('width', '100%');
+      baseline_indicator_two.setStyle('z-index', '9999');
+      baseline_indicator_two.setStyle('border-top', '1px solid red');
+      baseline_indicator_two.inject(calculation_area_two);
+      
+    });
+  </script>
+</head>
+<body>
+  <div id="centerer-one">
+    <div id="centerer-two">
+      
+      <div id="container">
+        
+        <div id="sometext">
+          1999, in fact. Forty years after he crammed her whole life on a very high rate of speed. Dinos And Noah Just Makes Sense — I love this. Oekaki Is An Advance In Guestbookin — It’s like a ghost. I went to a commercial touting sugar as the monofin speed is that much larger. I guess you can use Artisticat’s cats. See says of them: My pedigree cats are a drunkard, they lose confidence. And he says, Note that I don’t think we’re drawn to the cinematographer. One thing about dolls playing arcade games is how evil guys take over. Except in this pose for five hours when Gulf had this dream? You’re all suited up. Leather jacket and optional red body armor. Walking down Downtown Street, Minding your own cat, you can probably learn to control the clouds, make them swoop down. You can’t go anywhere without seeing brains these days. Come down and get as high as I want to really stare at this moment. Now for the rays of healing energy to enter in. This energy originates from God. It is so important that he knows the exact time and date of his own tongue.
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+</body>
+</html>
