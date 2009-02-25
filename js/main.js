@@ -50,7 +50,7 @@ window.addEvent('domready', function() {
   baseline_indicator.setStyle('left', '0px');
   baseline_indicator.setStyle('width', '100%');
   baseline_indicator.setStyle('z-index', '9999');
-  baseline_indicator.setStyle('border-top', '1px solid red');
+  baseline_indicator.setStyle('border-top', '1px dashed red');
   baseline_indicator.inject(calculation_area);
   
   // =============
@@ -93,7 +93,7 @@ window.addEvent('domready', function() {
   baseline_indicator_two.setStyle('right', '0px');
   baseline_indicator_two.setStyle('width', '100%');
   baseline_indicator_two.setStyle('z-index', '9999');
-  baseline_indicator_two.setStyle('border-top', '1px solid red');
+  baseline_indicator_two.setStyle('border-top', '1px dashed red');
   baseline_indicator_two.inject(calculation_area_two);
   
 });
