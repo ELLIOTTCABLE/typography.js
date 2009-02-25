@@ -19,6 +19,7 @@ window.addEvent('domready', function() {
   calculation_area.setStyle('font-weight', target_element.getStyle('font-weight'));
   calculation_area.setStyle('line-height', '1.0');
   
+  calculation_area.setStyle('text-shadow', '#FFFFFF 3px 0px 0px, #FFFFFF -3px 0px 0px, #FFFFFF 0px 1px 1px, #FFFFFF 0px -1px 1px');
   calculation_area.setStyle('font-size', '1000%');
   calculation_area.inject(root);
   
@@ -49,8 +50,8 @@ window.addEvent('domready', function() {
   baseline_indicator.setStyle('top', baseline_position.toString() + 'px');
   baseline_indicator.setStyle('left', '0px');
   baseline_indicator.setStyle('width', '100%');
-  baseline_indicator.setStyle('z-index', '9999');
-  baseline_indicator.setStyle('border-top', '1px dashed red');
+  baseline_indicator.setStyle('z-index', '-9999');
+  baseline_indicator.setStyle('border-top', '3px solid green');
   baseline_indicator.inject(calculation_area);
   
   // =============
