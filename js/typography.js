@@ -64,11 +64,14 @@ var create_calculation_area = function(content) {
 
 // ////////
 // This function draws an underline directly under an element's text.
-Typography.underline = function(element) {
+Typography.underline = function(element, style) {
   // We require an `element` argument to be present
   if(typeof element != "object" || element == null) return false;
   // We require that `element` duck type to an `Element`
   if(typeof element.getStyle != "function") return false;
+  
+  // We require a `style` argument to be present
+  if(typeof style != "string" || style == null) return false;
   
   var baseline = Typography.baseline(element)
   if(!baseline) return false;
@@ -107,7 +110,7 @@ Typography.underline = function(element) {
   wrapper.inject(duplicate);
   
   // … and then add a bottom-border to that span!
-  wrapper.setStyle('border-bottom', '1px solid red');
+  wrapper.setStyle('border-bottom', style);
   
   return true;
 }
