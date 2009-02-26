@@ -31,9 +31,11 @@ var create_calculation_area = function(content) {
 // = Public functions =
 // ====================
 
+// ////////
 // This function returns a numeric float representing the ratio of the text's
-// cap-height to its baseline. Caveats: Does not take line-height into account,
-// adjust your own calculations to whatever line-height you may be utilizing.
+// cap-height to its baseline.
+// Caveats: Does not take line-height into account, adjust your own
+// calculations to whatever line-height you may be utilizing.
 Typography.baseline = function(element) {
   // We require an `element` argument to be present
   if(typeof element != "object" || element == null) return false;
