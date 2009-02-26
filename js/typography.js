@@ -44,7 +44,7 @@ Typography.baseline = function(element) {
   var baseline_position = bottom; // + (0.25 * sub_span.offsetHeight);
   var baseline_ratio = (calculation_area.offsetHeight - baseline_position) / calculation_area.offsetHeight;
   
-  calculation_area.parentElement.removeChild(calculation_area);
+  calculation_area.parentNode.removeChild(calculation_area);
   
   return baseline_ratio;
 };
