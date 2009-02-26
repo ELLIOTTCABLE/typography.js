@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title>JavaScript ♥ Baselines</title>
+  <script type="text/javascript" charset="utf-8"
+    src="js/vendor/mootools-1.2.1-core-jm.js"></script>
+  <script type="text/javascript" charset="utf-8"
+    src="js/typography.js"></script>
+  <script type="text/javascript" charset="utf-8">
+    <![CDATA[
+      window.addEvent('domready', function() {
+        [1, 2, 3, 4, 5, 6, 7].each(function(e) {
+          var baseline = Typography.baseline($('title-' + e));
+          console.log("Baseline " + e + ": " + baseline);
+        })
+      });
+    ]]>
+  </script>
+  <style type="text/css" media="screen">
+    <![CDATA[
+      * {margin: 0em; padding: 0em;}
+      #title-1 { font: normal 400 48pt/1.00 "Garamond Premier Pro", Impact; }
+      #title-2 { font: normal 400 48pt/1.00 "Bickham Script Pro", Impact; }
+      #title-3 { font: normal 400 48pt/1.00 "Coronet LT Std", Impact; }
+      #title-4 { font: normal 400 48pt/1.00 "Fette Fraktur LT Std", Impact; }
+      #title-5 { font: normal 400 48pt/1.00 "ITC Century Std", Impact; }
+      #title-6 { font: normal 400 48pt/1.00 "Minion Pro", Impact; }
+      #title-7 { font: normal 400 48pt/1.00 "Zapfino", Impact; }
+    ]]>
+  </style>
+</head>
+<body>
+  <h1 id="title-1">Testing something quite possibly awesome!</h1>
+  <h1 id="title-2">Testing something quite possibly awesome!</h1>
+  <h1 id="title-3">Testing something quite possibly awesome!</h1>
+  <h1 id="title-4">Testing something quite possibly awesome!</h1>
+  <h1 id="title-5">Testing something quite possibly awesome!</h1>
+  <h1 id="title-6">Testing something quite possibly awesome!</h1>
+  <!-- <h1 id="title-7">Testing something quite possibly awesome!</h1> -->
+</body>
+</html>
