@@ -95,8 +95,6 @@ Typography.underline = function(element) {
   duplicate.setStyle('left', '0px');
   duplicate.setStyle('z-index', zIndex(element) - 1);
   
-  duplicate.setStyle('color', 'red'); // DEBUG
-  
   // … then create a new span, and move all of the duplicate's contents into it …
   var wrapper = new Element('span');
   // (Unfortunately, getChildren only returns elements, not all nodes.)
@@ -117,7 +115,6 @@ Typography.underline = function(element) {
 // Returns the computed `z-index` of a given `element`, iterating up the DOM
 // until it reaches an element with a defined `z-index`.
 var zIndex = function(element) {
-  if(typeof console != "undefined") console.log(element); // DEBUG
   // We require an `element` argument to be present
   if(typeof element != "object" || element == null) return false;
   // We require that `element` duck type to an `Element`
