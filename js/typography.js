@@ -5,31 +5,10 @@ var Typography = {};
 
 (function(){
 
-// =====================
-// = Private functions =
-// =====================
-
 // This will retreive the absolute root of the current document.
 var root = function() {
   return document.documentElement.ownerDocument.documentElement;
 };
-
-// This will create and return a new "calculation div" for measuring purposes.
-var create_calculation_area = function(content) {
-  var calculation_area = new Element('div');
-  calculation_area.setStyle('position', 'fixed');
-  calculation_area.setStyle('top', '-1000000px');
-  calculation_area.setStyle('left', '-1000000px');
-  
-  calculation_area.inject(root());
-  
-  calculation_area.set('text', content);
-  return calculation_area;
-};
-
-// ====================
-// = Public functions =
-// ====================
 
 // ////////
 // This function returns a numeric float representing the ratio of the text's
@@ -68,6 +47,19 @@ Typography.baseline = function(element) {
   calculation_area.parentElement.removeChild(calculation_area);
   
   return baseline_ratio;
+};
+
+// This will create and return a new "calculation div" for measuring purposes.
+var create_calculation_area = function(content) {
+  var calculation_area = new Element('div');
+  calculation_area.setStyle('position', 'fixed');
+  calculation_area.setStyle('top', '-1000000px');
+  calculation_area.setStyle('left', '-1000000px');
+  
+  calculation_area.inject(root());
+  
+  calculation_area.set('text', content);
+  return calculation_area;
 };
 
 })();
